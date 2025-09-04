@@ -151,74 +151,71 @@ const categories = [
       },
     ],
   },
+
+  {
+"Интензивни рехабилитационни програми, психотерапия, социална и семейна подкрепа.",
+prognosis:
+"Неблагоприятна при тежка полизависимост, но възможни ремисии при интегрирана терапия.",
+},
+],
+},
 ];
 
+
 export default function DiagnosesPage() {
-  const firstCode = categories.length > 0 ? categories[0].code : null;
-  const [selectedCode, setSelectedCode] = useState(firstCode);
-  const selectedCategory = useMemo(
-    () => categories.find((c) => c.code === selectedCode) || categories[0],
-    [selectedCode]
-  );
+const firstCode = categories.length > 0 ? categories[0].code : null;
+const [selectedCode, setSelectedCode] = useState(firstCode);
+const selectedCategory = useMemo(
+() => categories.find((c) => c.code === selectedCode) || categories[0],
+[selectedCode]
+);
 
-  return (
-    <div className="grid grid-cols-4 gap-6">
-      {/* Sidebar */}
-      <aside className="col-span-1 bg-white rounded-xl p-4 shadow">
-        <h2 className="text-xl font-bold mb-4 text-[#212845]">Категории</h2>
-        <ul className="space-y-2">
-          {categories.map((cat) => (
-            <li key={cat.code}>
-              <button
-                onClick={() => setSelectedCode(cat.code)}
-                className={`w-full text-left p-2 rounded flex items-center gap-2 font-medium transition ${
-                  selectedCode === cat.code
-                    ? "bg-[#212845] text-white"
-                    : "hover:bg-gray-100"
-                }`}
-              >
-                <span>{cat.icon}</span>
-                <span>{cat.name}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </aside>
 
-      {/* Content */}
-      <main className="col-span-3">
-        <h2 className="text-2xl font-bold mb-4 text-[#212845]">
-          {selectedCategory.name}
-        </h2>
-        <div className="grid gap-6">
-          {selectedCategory.diagnoses.map((d) => (
-            <div key={d.code} className="rounded-xl bg-white p-6 shadow grid gap-3">
-              <h3 className="text-xl font-semibold text-[#D6628D]">
-                {d.code} – {d.name}
-              </h3>
-              <p><strong>Описание:</strong> {d.description}</p>
-              <p><strong>Симптоми:</strong> {d.symptoms}</p>
-              <p><strong>Медикаментозно лечение:</strong> {d.treatment_med}</p>
-              <p><strong>Психологическа подкрепа:</strong> {d.treatment_psych}</p>
-              <p><strong>Прогноза:</strong> {d.prognosis}</p>
+return (
+<div className="grid grid-cols-4 gap-6">
+{/* Sidebar */}
+<aside className="col-span-1 bg-white rounded-xl p-4 shadow">
+<h2 className="text-xl font-bold mb-4 text-[#212845]">Категории</h2>
+<ul className="space-y-2">
+{categories.map((cat) => (
+<li key={cat.code}>
+<button
+onClick={() => setSelectedCode(cat.code)}
+className={`w-full text-left p-2 rounded flex items-center gap-2 font-medium transition ${
+selectedCode === cat.code
+? "bg-[#212845] text-white"
+: "hover:bg-gray-100"
+}`}
+>
+<span>{cat.icon}</span>
+<span>{cat.name}</span>
+</button>
+</li>
+))}
+</ul>
+</aside>
 
-              {Array.isArray(d.subdiagnoses) && d.subdiagnoses.length > 0 && (
-                <div className="pt-2">
-                  <p className="font-semibold">Подгрупи:</p>
-                  <ul className="list-disc pl-6">
-                    {d.subdiagnoses.map((s, i) => (
-                      <li key={i}>
-                        <span className="font-medium">{s.name}</span>
-                        {s.note ? <span className="text-gray-600"> — {s.note}</span> : null}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </main>
-    </div>
-  );
+
+{/* Content */}
+<main className="col-span-3">
+<h2 className="text-2xl font-bold mb-4 text-[#212845]">
+{selectedCategory.name}
+</h2>
+<div className="grid gap-6">
+{selectedCategory.diagnoses.map((d) => (
+<div key={d.code} className="rounded-xl bg-white p-6 shadow grid gap-3">
+<h3 className="text-xl font-semibold text-[#D6628D]">
+{d.code} – {d.name}
+</h3>
+<p><strong>Описание:</strong> {d.description}</p>
+<p><strong>Симптоми:</strong> {d.symptoms}</p>
+<p><strong>Медикаментозно лечение:</strong> {d.treatment_med}</p>
+<p><strong>Психологическа подкрепа:</strong> {d.treatment_psych}</p>
+<p><strong>Прогноза:</strong> {d.prognosis}</p>
+</div>
+))}
+</div>
+</main>
+</div>
+);
 }
