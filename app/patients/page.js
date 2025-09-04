@@ -34,11 +34,12 @@ export default function Patients() {
       <div className="flex justify-between items-center">
         <h2 className="text-3xl font-bold">Пациенти</h2>
         <Link
-          href="/patients/new"
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-        >
-          ➕ Добави нов пациент
-        </Link>
+  href="/patients/new"
+  className="text-white px-4 py-2 rounded"
+  style={{ backgroundColor: "#212845" }}
+>
+  ➕ Добави нов пациент
+</Link>
       </div>
 
       <input
