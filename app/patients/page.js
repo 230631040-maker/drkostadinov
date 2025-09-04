@@ -1,53 +1,48 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Patients() {
-  const [patients, setPatients] = useState([]);
-  const [form, setForm] = useState({ name: "", age: "", diagnosis: "" });
+  const [patients, setPatients] = useState([
+    { id: 1, name: "Иван Иванов", birth: "1985-06-12", phone: "0888123456", email: "ivan@example.com" },
+    { id: 2, name: "Мария Петрова", birth: "1990-03-21", phone: "0888987654", email: "maria@example.com" },
+  ]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!form.name || !form.age || !form.diagnosis) return;
-    setPatients([...patients, { ...form, id: Date.now() }]);
-    setForm({ name: "", age: "", diagnosis: "" });
-  }
+  const [search, setSearch] = useState("");
+
+  const filtered = patients.filter(p =>
+    p.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <section className="grid gap-6">
-      <h2 className="text-3xl font-bold">Patients</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-bold">Пациенти</h2>
+        <Link href="/patients/new" className="bg-blue-600 text-white px-4 py-2 rounded">
+          ➕ Добави нов пациент
+        </Link>
+      </div>
 
-      <form onSubmit={handleSubmit} className="grid gap-3 max-w-md">
-        <input
-          className="border rounded p-2"
-          placeholder="Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-        />
-        <input
-          className="border rounded p-2"
-          placeholder="Age"
-          type="number"
-          value={form.age}
-          onChange={(e) => setForm({ ...form, age: e.target.value })}
-        />
-        <input
-          className="border rounded p-2"
-          placeholder="Diagnosis"
-          value={form.diagnosis}
-          onChange={(e) => setForm({ ...form, diagnosis: e.target.value })}
-        />
-        <button className="bg-blue-600 text-white px-4 py-2 rounded">
-          Add Patient
-        </button>
-      </form>
+      <input
+        type="text"
+        placeholder="Търсене по име..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="border rounded p-2 max-w-md"
+      />
 
       <div className="grid gap-3">
-        {patients.map((p) => (
-          <div key={p.id} className="rounded-xl bg-white p-4 shadow">
-            <p><strong>Name:</strong> {p.name}</p>
-            <p><strong>Age:</strong> {p.age}</p>
-            <p><strong>Diagnosis:</strong> {p.diagnosis}</p>
-          </div>
+        {filtered.map((p) => (
+          <Link
+            href={`/patients/${p.id}`}
+            key={p.id}
+            className="rounded-xl bg-white p-4 shadow hover:shadow-md"
+          >
+            <p><strong>Име:</strong> {p.name}</p>
+            <p><strong>Рожд. дата:</strong> {p.birth}</p>
+            <p><strong>Телефон:</strong> {p.phone}</p>
+            <p><strong>Email:</strong> {p.email}</p>
+          </Link>
         ))}
       </div>
     </section>
