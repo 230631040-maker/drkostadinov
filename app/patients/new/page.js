@@ -99,7 +99,7 @@ export default function NewPatient() {
         <button
           type="submit"
           className="text-white px-4 py-2 rounded font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "#212845" }}
+          style={{ backgroundColor: "#D6628D" }}
         >
           Запази пациента
         </button>
