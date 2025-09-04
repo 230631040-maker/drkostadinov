@@ -11,7 +11,8 @@ export default function Home() {
 
       {/* Приветствено съобщение */}
       <h1 className="text-4xl font-extrabold text-[#212845]">
-        Добре дошли при <span className="text-[#D6628D]">Dr.Kostadinov</span>
+        Добре дошли в приложението на{" "}
+        <span className="text-[#D6628D]">д-р Костадинов</span>
       </h1>
       <p className="text-lg text-gray-700 max-w-2xl">
         Вашето приложение за психично здраве, диагнози и изследвания.
