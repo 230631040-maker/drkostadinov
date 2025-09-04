@@ -1,7 +1,7 @@
 import "./globals.css";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
-import Container from "@/components/Container";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+import Container from "../components/Container";
 
 export const metadata = {
   title: "Perfectno",
