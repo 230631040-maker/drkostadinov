@@ -3,14 +3,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/appointments", label: "Appointments" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/patients", label: "Patients" },
+  { href: "/diagnoses", label: "Diagnoses" },
+  { href: "/tests", label: "Tests" },
 ];
 
 export default function NavBar() {
