@@ -3,9 +3,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/patients", label: "Patients" },
-  { href: "/diagnoses", label: "Diagnoses" },
-  { href: "/tests", label: "Tests" },
+  { href: "/patients", label: "Пациенти" },
+  { href: "/diagnoses", label: "Диагнози" },
+  { href: "/tests", label: "Тестове и изследвания" },
 ];
 
 export default function NavBar() {
