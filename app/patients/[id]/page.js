@@ -1,11 +1,6 @@
 "use client";
 import { useState } from "react";
-import {
-  User,
-  Calendar,
-  FileText,
-  Stethoscope,
-} from "lucide-react";
+import { User, Calendar, FileText, Stethoscope } from "lucide-react";
 
 export default function PatientDetails({ params }) {
   const { id } = params;
@@ -38,7 +33,11 @@ export default function PatientDetails({ params }) {
   }
 
   // диагнози
-  const allDiagnoses = ["Депресивен епизод", "Тревожно разстройство", "Шизофрения"];
+  const allDiagnoses = [
+    "Депресивен епизод",
+    "Тревожно разстройство",
+    "Шизофрения",
+  ];
   const [patientDiagnoses, setPatientDiagnoses] = useState([]);
   const [selectedDiagnosis, setSelectedDiagnosis] = useState("");
   const [diagNote, setDiagNote] = useState("");
@@ -93,19 +92,24 @@ export default function PatientDetails({ params }) {
 
       {/* съдържание */}
       {tab === "data" && (
-        <div className="rounded-xl bg-white p-4 shadow grid gap-2">
-          <p>
-            <strong>ЕГН:</strong> {patient.egn}
-          </p>
-          <p>
-            <strong>Рожд. дата:</strong> {patient.birth}
-          </p>
-          <p>
-            <strong>Телефон:</strong> {patient.phone}
-          </p>
-          <p>
-            <strong>Email:</strong> {patient.email}
-          </p>
+        <div className="grid gap-6">
+          {/* Основна информация */}
+          <div className="rounded-xl bg-white p-4 shadow grid gap-2">
+            <h3 className="text-xl font-semibold border-b pb-1">Основна информация</h3>
+            <p><strong>Име:</strong> {patient.name}</p>
+            <p><strong>ЕГН:</strong> {patient.egn}</p>
+            <p><strong>Рожд. дата:</strong> {patient.birth}</p>
+            <p><strong>Телефон:</strong> {patient.phone}</p>
+            <p><strong>Email:</strong> {patient.email}</p>
+          </div>
+
+          {/* Медицинска информация */}
+          <div className="rounded-xl bg-white p-4 shadow grid gap-2">
+            <h3 className="text-xl font-semibold border-b pb-1">Медицинска информация</h3>
+            <p><strong>Основна диагноза:</strong> Депресивен епизод</p>
+            <p><strong>Симптоми:</strong> Тревожност, липса на концентрация, безсъние</p>
+            <p><strong>Бележка от последна среща:</strong> Пациентът съобщава за частично подобрение след терапия.</p>
+          </div>
         </div>
       )}
 
@@ -138,9 +142,7 @@ export default function PatientDetails({ params }) {
           <div className="grid gap-3">
             {sessions.map((s, i) => (
               <div key={i} className="rounded-xl bg-white p-4 shadow">
-                <p>
-                  <strong>Дата:</strong> {s.date}
-                </p>
+                <p><strong>Дата:</strong> {s.date}</p>
                 <p>{s.notes}</p>
               </div>
             ))}
@@ -183,9 +185,7 @@ export default function PatientDetails({ params }) {
           <div className="grid gap-3">
             {patientDiagnoses.map((d, i) => (
               <div key={i} className="rounded-xl bg-white p-4 shadow">
-                <p>
-                  <strong>{d.name}</strong>
-                </p>
+                <p><strong>{d.name}</strong></p>
                 {d.note && <p className="text-sm text-gray-600">{d.note}</p>}
               </div>
             ))}
