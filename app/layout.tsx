@@ -16,12 +16,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="bg-[#212845] text-white shadow-md">
           <Container>
             <div className="flex items-center justify-between py-4 gap-4 flex-wrap">
-              {/* Лого + заглавие - не позволявай свиване/рязане */}
-              <div className="flex items-center gap-3 shrink-0 whitespace-nowrap">
-                <img src="/logo.svg" alt="Dr.Kostadinov Logo" className="h-10 w-10 rounded-full" />
-                <h1 className="text-3xl font-extrabold tracking-tight">Dr.Kostadinov</h1>
-              </div>
-              {/* Навигация */}
+              {/* Само име без лого */}
+              <h1 className="text-3xl font-extrabold tracking-tight whitespace-nowrap">
+                Dr.Kostadinov
+              </h1>
               <div className="flex-1">
                 <NavBar />
               </div>
