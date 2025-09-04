@@ -23,46 +23,84 @@ export default function NewPatient() {
     <section className="grid gap-6 max-w-lg">
       <h2 className="text-3xl font-bold text-[#212845]">➕ Нов пациент</h2>
 
-      <form onSubmit={handleSubmit} className="grid gap-3">
-        <input
-          className="border rounded p-2"
-          placeholder="Име и фамилия"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-        />
+      <form onSubmit={handleSubmit} className="grid gap-4">
+        {/* Име и фамилия */}
+        <div className="grid gap-1">
+          <label htmlFor="name" className="text-sm font-medium text-[#212845]">
+            Име и фамилия
+          </label>
+          <input
+            id="name"
+            className="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#212845]/40"
+            placeholder="Име и фамилия"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
+        </div>
 
-        <input
-          type="date"
-          className="border rounded p-2"
-          value={form.birth}
-          onChange={(e) => setForm({ ...form, birth: e.target.value })}
-          placeholder="Рожд. дата"
-        />
+        {/* Рождена дата */}
+        <div className="grid gap-1">
+          <label htmlFor="birth" className="text-sm font-medium text-[#212845]">
+            Рождена дата
+          </label>
+          <input
+            id="birth"
+            type="date"
+            className="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#212845]/40"
+            value={form.birth}
+            onChange={(e) => setForm({ ...form, birth: e.target.value })}
+          />
+        </div>
 
-        <input
-          type="date"
-          className="border rounded p-2"
-          value={form.firstVisit}
-          onChange={(e) => setForm({ ...form, firstVisit: e.target.value })}
-          placeholder="Дата на първо посещение"
-        />
+        {/* Дата на първо посещение */}
+        <div className="grid gap-1">
+          <label htmlFor="firstVisit" className="text-sm font-medium text-[#212845]">
+            Дата на първо посещение
+          </label>
+          <input
+            id="firstVisit"
+            type="date"
+            className="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#212845]/40"
+            value={form.firstVisit}
+            onChange={(e) => setForm({ ...form, firstVisit: e.target.value })}
+          />
+        </div>
 
-        <input
-          className="border rounded p-2"
-          placeholder="Телефон"
-          value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-        />
+        {/* Телефон */}
+        <div className="grid gap-1">
+          <label htmlFor="phone" className="text-sm font-medium text-[#212845]">
+            Телефон
+          </label>
+          <input
+            id="phone"
+            className="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#212845]/40"
+            placeholder="Телефон"
+            value={form.phone}
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+          />
+        </div>
 
-        <input
-          type="email"
-          className="border rounded p-2"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-        />
+        {/* Email */}
+        <div className="grid gap-1">
+          <label htmlFor="email" className="text-sm font-medium text-[#212845]">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            className="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#212845]/40"
+            placeholder="Email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </div>
 
-        <button className="bg-[#D6628D] hover:bg-[#b84d6f] text-white px-4 py-2 rounded transition">
+        {/* Бутон – тъмно син като хедъра */}
+        <button
+          type="submit"
+          className="text-white px-4 py-2 rounded font-semibold transition hover:opacity-90"
+          style={{ backgroundColor: "#212845" }}
+        >
           Запази пациента
         </button>
       </form>
