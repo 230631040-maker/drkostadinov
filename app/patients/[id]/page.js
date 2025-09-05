@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import { User, Calendar, FileText, Stethoscope } from "lucide-react";
-import { catalog, getAllDiagnosisNames } from "@/lib/diagnosesCatalog";
+import { catalog, getAllDiagnosisNames } from "../../../lib/diagnosesCatalog";
 
 export default function PatientDetails({ params }) {
   const { id } = params;
